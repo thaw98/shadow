@@ -1,0 +1,1196 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "EMPLOYEE_1.sql",
+  "sources": [
+    {
+      "id": "7f57723d-bfa7-403e-94b3-2ed234305210",
+      "name": "EMPLOYEE_1.sql",
+      "kind": {
+        "kind": "SqlLocalFile",
+        "name": "EMPLOYEE_1.sql",
+        "size": 19236,
+        "modified": 1758445353762
+      },
+      "content": [],
+      "tables": [
+        {
+          "schema": "",
+          "table": "addresses",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "address_type",
+              "type": "varchar(20)",
+              "nullable": true,
+              "default": "'Home'"
+            },
+            {
+              "name": "street",
+              "type": "varchar(100)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "city",
+              "type": "varchar(50)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "state",
+              "type": "varchar(50)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "postal_code",
+              "type": "varchar(20)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "country",
+              "type": "varchar(50)",
+              "nullable": true,
+              "default": "'Myanmar'"
+            },
+            {
+              "name": "is_primary",
+              "type": "tinyint(1)",
+              "nullable": true,
+              "default": "'1'"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "attendance",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "employee_id",
+              "type": "int"
+            },
+            {
+              "name": "date",
+              "type": "date"
+            },
+            {
+              "name": "check_in",
+              "type": "time",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "check_out",
+              "type": "time",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "status",
+              "type": "varchar(50)",
+              "nullable": true,
+              "default": "'Present'"
+            },
+            {
+              "name": "notes",
+              "type": "text",
+              "nullable": true
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          },
+          "uniques": [
+            {
+              "name": "unique_attendance",
+              "columns": [
+                "employee_id",
+                "date"
+              ],
+              "definition": "UNIQUE KEY `unique_attendance` (`employee_id`,`date`)"
+            }
+          ],
+          "indexes": [
+            {
+              "name": "idx_attendance_date",
+              "columns": [
+                "date"
+              ],
+              "definition": "KEY `idx_attendance_date` (`date`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "department",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "department",
+              "type": "varchar(45)",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "department_managers",
+          "columns": [
+            {
+              "name": "department_id",
+              "type": "int"
+            },
+            {
+              "name": "employee_id",
+              "type": "int"
+            },
+            {
+              "name": "start_date",
+              "type": "date"
+            },
+            {
+              "name": "end_date",
+              "type": "date",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "is_current",
+              "type": "tinyint(1)",
+              "nullable": true,
+              "default": "'1'"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "department_id",
+              "employee_id",
+              "start_date"
+            ]
+          },
+          "indexes": [
+            {
+              "name": "employee_id",
+              "columns": [
+                "employee_id"
+              ],
+              "definition": "KEY `employee_id` (`employee_id`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "employee",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "name",
+              "type": "varchar(45)"
+            },
+            {
+              "name": "address",
+              "type": "varchar(100)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "age",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "position_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "gender_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "service_year_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "performance_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "email",
+              "type": "varchar(100)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "phone",
+              "type": "varchar(20)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "addresses_id",
+              "type": "int"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id",
+              "addresses_id"
+            ]
+          },
+          "uniques": [
+            {
+              "name": "email",
+              "columns": [
+                "email"
+              ],
+              "definition": "UNIQUE KEY `email` (`email`)"
+            }
+          ],
+          "indexes": [
+            {
+              "name": "fk_employee_position_idx",
+              "columns": [
+                "position_id"
+              ],
+              "definition": "KEY `fk_employee_position_idx` (`position_id`)"
+            },
+            {
+              "name": "fk_employee_gender1_idx",
+              "columns": [
+                "gender_id"
+              ],
+              "definition": "KEY `fk_employee_gender1_idx` (`gender_id`)"
+            },
+            {
+              "name": "fk_employee_service_year1_idx",
+              "columns": [
+                "service_year_id"
+              ],
+              "definition": "KEY `fk_employee_service_year1_idx` (`service_year_id`)"
+            },
+            {
+              "name": "fk_employee_performance1_idx",
+              "columns": [
+                "performance_id"
+              ],
+              "definition": "KEY `fk_employee_performance1_idx` (`performance_id`)"
+            },
+            {
+              "name": "idx_employee_name",
+              "columns": [
+                "name"
+              ],
+              "definition": "KEY `idx_employee_name` (`name`)"
+            },
+            {
+              "name": "fk_employee_addresses1_idx",
+              "columns": [
+                "addresses_id"
+              ],
+              "definition": "KEY `fk_employee_addresses1_idx` (`addresses_id`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "gender",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "gender",
+              "type": "varchar(10)",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "leave_requests",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "employee_id",
+              "type": "int"
+            },
+            {
+              "name": "leave_type_id",
+              "type": "int"
+            },
+            {
+              "name": "start_date",
+              "type": "date"
+            },
+            {
+              "name": "end_date",
+              "type": "date"
+            },
+            {
+              "name": "days_requested",
+              "type": "int"
+            },
+            {
+              "name": "reason",
+              "type": "text",
+              "nullable": true
+            },
+            {
+              "name": "status",
+              "type": "varchar(100)",
+              "nullable": true,
+              "default": "'Pending'"
+            },
+            {
+              "name": "approved_by",
+              "type": "int",
+              "nullable": true,
+              "default": "'1'"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          },
+          "indexes": [
+            {
+              "name": "employee_id",
+              "columns": [
+                "employee_id"
+              ],
+              "definition": "KEY `employee_id` (`employee_id`)"
+            },
+            {
+              "name": "leave_type_id",
+              "columns": [
+                "leave_type_id"
+              ],
+              "definition": "KEY `leave_type_id` (`leave_type_id`)"
+            },
+            {
+              "name": "approved_by",
+              "columns": [
+                "approved_by"
+              ],
+              "definition": "KEY `approved_by` (`approved_by`)"
+            },
+            {
+              "name": "idx_leave_status",
+              "columns": [
+                "status"
+              ],
+              "definition": "KEY `idx_leave_status` (`status`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "leave_types",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "name",
+              "type": "varchar(50)"
+            },
+            {
+              "name": "max_days",
+              "type": "int"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "performance",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "performance",
+              "type": "varchar(2)",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "performance_reviews",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "employee_id",
+              "type": "int"
+            },
+            {
+              "name": "review_date",
+              "type": "date"
+            },
+            {
+              "name": "performance_id",
+              "type": "int"
+            },
+            {
+              "name": "strengths",
+              "type": "text",
+              "nullable": true
+            },
+            {
+              "name": "comments",
+              "type": "text",
+              "nullable": true
+            },
+            {
+              "name": "next_review_date",
+              "type": "date",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          },
+          "indexes": [
+            {
+              "name": "employee_id",
+              "columns": [
+                "employee_id"
+              ],
+              "definition": "KEY `employee_id` (`employee_id`)"
+            },
+            {
+              "name": "performance_id",
+              "columns": [
+                "performance_id"
+              ],
+              "definition": "KEY `performance_id` (`performance_id`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "position",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "position",
+              "type": "varchar(30)",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "salary_id",
+              "type": "int"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          },
+          "indexes": [
+            {
+              "name": "fk_position_salary1_idx",
+              "columns": [
+                "salary_id"
+              ],
+              "definition": "KEY `fk_position_salary1_idx` (`salary_id`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "position_department",
+          "columns": [
+            {
+              "name": "position_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "department_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "indexes": [
+            {
+              "name": "fk_position_has_department_department1_idx",
+              "columns": [
+                "department_id"
+              ],
+              "definition": "KEY `fk_position_has_department_department1_idx` (`department_id`)"
+            },
+            {
+              "name": "fk_position_has_department_position1_idx",
+              "columns": [
+                "position_id"
+              ],
+              "definition": "KEY `fk_position_has_department_position1_idx` (`position_id`)"
+            },
+            {
+              "name": "idx_employee_department",
+              "columns": [
+                "department_id"
+              ],
+              "definition": "KEY `idx_employee_department` (`department_id`)"
+            }
+          ]
+        },
+        {
+          "schema": "",
+          "table": "salary",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "salary",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "service_year",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "service_year",
+              "type": "double",
+              "nullable": true,
+              "default": "NULL"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          }
+        },
+        {
+          "schema": "",
+          "table": "users",
+          "columns": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "employee_id",
+              "type": "int",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "username",
+              "type": "varchar(50)"
+            },
+            {
+              "name": "password_hash",
+              "type": "varchar(255)"
+            },
+            {
+              "name": "last_login",
+              "type": "time",
+              "nullable": true,
+              "default": "NULL"
+            },
+            {
+              "name": "is_active",
+              "type": "tinyint(1)",
+              "nullable": true,
+              "default": "'1'"
+            }
+          ],
+          "primaryKey": {
+            "columns": [
+              "id"
+            ]
+          },
+          "uniques": [
+            {
+              "name": "username",
+              "columns": [
+                "username"
+              ],
+              "definition": "UNIQUE KEY `username` (`username`)"
+            },
+            {
+              "name": "employee_id",
+              "columns": [
+                "employee_id"
+              ],
+              "definition": "UNIQUE KEY `employee_id` (`employee_id`)"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "name": "attendance_ibfk_1",
+          "src": {
+            "table": ".attendance",
+            "column": "employee_id"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        },
+        {
+          "name": "department_managers_ibfk_2",
+          "src": {
+            "table": ".department_managers",
+            "column": "employee_id"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        },
+        {
+          "name": "department_managers_ibfk_1",
+          "src": {
+            "table": ".department_managers",
+            "column": "department_id"
+          },
+          "ref": {
+            "table": ".department",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_employee_service_year1",
+          "src": {
+            "table": ".employee",
+            "column": "service_year_id"
+          },
+          "ref": {
+            "table": ".service_year",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_employee_position",
+          "src": {
+            "table": ".employee",
+            "column": "position_id"
+          },
+          "ref": {
+            "table": ".position",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_employee_performance1",
+          "src": {
+            "table": ".employee",
+            "column": "performance_id"
+          },
+          "ref": {
+            "table": ".performance",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_employee_gender1",
+          "src": {
+            "table": ".employee",
+            "column": "gender_id"
+          },
+          "ref": {
+            "table": ".gender",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_employee_addresses1",
+          "src": {
+            "table": ".employee",
+            "column": "addresses_id"
+          },
+          "ref": {
+            "table": ".addresses",
+            "column": "id"
+          }
+        },
+        {
+          "name": "leave_requests_ibfk_3",
+          "src": {
+            "table": ".leave_requests",
+            "column": "approved_by"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        },
+        {
+          "name": "leave_requests_ibfk_2",
+          "src": {
+            "table": ".leave_requests",
+            "column": "leave_type_id"
+          },
+          "ref": {
+            "table": ".leave_types",
+            "column": "id"
+          }
+        },
+        {
+          "name": "leave_requests_ibfk_1",
+          "src": {
+            "table": ".leave_requests",
+            "column": "employee_id"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        },
+        {
+          "name": "performance_reviews_ibfk_3",
+          "src": {
+            "table": ".performance_reviews",
+            "column": "performance_id"
+          },
+          "ref": {
+            "table": ".performance",
+            "column": "id"
+          }
+        },
+        {
+          "name": "performance_reviews_ibfk_1",
+          "src": {
+            "table": ".performance_reviews",
+            "column": "employee_id"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_position_salary1",
+          "src": {
+            "table": ".position",
+            "column": "salary_id"
+          },
+          "ref": {
+            "table": ".salary",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_position_has_department_position1",
+          "src": {
+            "table": ".position_department",
+            "column": "position_id"
+          },
+          "ref": {
+            "table": ".position",
+            "column": "id"
+          }
+        },
+        {
+          "name": "fk_position_has_department_department1",
+          "src": {
+            "table": ".position_department",
+            "column": "department_id"
+          },
+          "ref": {
+            "table": ".department",
+            "column": "id"
+          }
+        },
+        {
+          "name": "users_ibfk_1",
+          "src": {
+            "table": ".users",
+            "column": "employee_id"
+          },
+          "ref": {
+            "table": ".employee",
+            "column": "id"
+          }
+        }
+      ],
+      "createdAt": 1758805377388,
+      "updatedAt": 1758805377388
+    }
+  ],
+  "layouts": {
+    "initial layout": {
+      "tables": [
+        {
+          "id": ".addresses",
+          "position": {
+            "left": 2850,
+            "top": 710
+          },
+          "size": {
+            "width": 167.14999389648438,
+            "height": 236.8000030517578
+          },
+          "color": "rose",
+          "columns": [
+            "id",
+            "address_type",
+            "street",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "is_primary"
+          ]
+        },
+        {
+          "id": ".attendance",
+          "position": {
+            "left": 610,
+            "top": 1050
+          },
+          "size": {
+            "width": 155.11666870117188,
+            "height": 212.8000030517578
+          },
+          "color": "red",
+          "columns": [
+            "id",
+            "employee_id",
+            "date",
+            "check_in",
+            "check_out",
+            "status",
+            "notes"
+          ]
+        },
+        {
+          "id": ".department",
+          "position": {
+            "left": 420,
+            "top": 40
+          },
+          "size": {
+            "width": 158.03334045410156,
+            "height": 92.80000305175781
+          },
+          "color": "lime",
+          "columns": [
+            "id",
+            "department"
+          ]
+        },
+        {
+          "id": ".department_managers",
+          "position": {
+            "left": 870,
+            "top": 330
+          },
+          "size": {
+            "width": 242.61666870117188,
+            "height": 164.8000030517578
+          },
+          "color": "lime",
+          "columns": [
+            "department_id",
+            "employee_id",
+            "start_date",
+            "end_date",
+            "is_current"
+          ]
+        },
+        {
+          "id": ".employee",
+          "position": {
+            "left": 1630,
+            "top": 680
+          },
+          "size": {
+            "width": 175.81666564941406,
+            "height": 308.79998779296875
+          },
+          "color": "red",
+          "columns": [
+            "id",
+            "addresses_id",
+            "position_id",
+            "gender_id",
+            "service_year_id",
+            "performance_id",
+            "email",
+            "name",
+            "address",
+            "age",
+            "phone"
+          ]
+        },
+        {
+          "id": ".gender",
+          "position": {
+            "left": 900,
+            "top": 780
+          },
+          "size": {
+            "width": 125.30000305175781,
+            "height": 92.80000305175781
+          },
+          "color": "cyan",
+          "columns": [
+            "id",
+            "gender"
+          ]
+        },
+        {
+          "id": ".leave_requests",
+          "position": {
+            "left": 1850,
+            "top": 310
+          },
+          "size": {
+            "width": 175.35000610351562,
+            "height": 260.79998779296875
+          },
+          "color": "purple",
+          "columns": [
+            "id",
+            "employee_id",
+            "leave_type_id",
+            "approved_by",
+            "status",
+            "start_date",
+            "end_date",
+            "days_requested",
+            "reason"
+          ]
+        },
+        {
+          "id": ".leave_types",
+          "position": {
+            "left": 2450,
+            "top": 100
+          },
+          "size": {
+            "width": 145.01666259765625,
+            "height": 116.80000305175781
+          },
+          "color": "purple",
+          "columns": [
+            "id",
+            "name",
+            "max_days"
+          ]
+        },
+        {
+          "id": ".performance",
+          "position": {
+            "left": 1100,
+            "top": 1000
+          },
+          "size": {
+            "width": 165.11666870117188,
+            "height": 92.80000305175781
+          },
+          "color": "cyan",
+          "columns": [
+            "id",
+            "performance"
+          ]
+        },
+        {
+          "id": ".performance_reviews",
+          "position": {
+            "left": 1530,
+            "top": 1190
+          },
+          "size": {
+            "width": 230.0833282470703,
+            "height": 212.8000030517578
+          },
+          "color": "cyan",
+          "columns": [
+            "id",
+            "employee_id",
+            "performance_id",
+            "review_date",
+            "strengths",
+            "comments",
+            "next_review_date"
+          ]
+        },
+        {
+          "id": ".position",
+          "position": {
+            "left": 650,
+            "top": 770
+          },
+          "size": {
+            "width": 132.3000030517578,
+            "height": 116.80000305175781
+          },
+          "color": "green",
+          "columns": [
+            "id",
+            "salary_id",
+            "position"
+          ]
+        },
+        {
+          "id": ".position_department",
+          "position": {
+            "left": 300,
+            "top": 440
+          },
+          "size": {
+            "width": 227.48333740234375,
+            "height": 92.80000305175781
+          },
+          "color": "green",
+          "columns": [
+            "position_id",
+            "department_id"
+          ]
+        },
+        {
+          "id": ".salary",
+          "position": {
+            "left": 190,
+            "top": 810
+          },
+          "size": {
+            "width": 106.13333129882812,
+            "height": 92.80000305175781
+          },
+          "color": "fuchsia",
+          "columns": [
+            "id",
+            "salary"
+          ]
+        },
+        {
+          "id": ".service_year",
+          "position": {
+            "left": 2450,
+            "top": 550
+          },
+          "size": {
+            "width": 166.26666259765625,
+            "height": 92.80000305175781
+          },
+          "color": "sky",
+          "columns": [
+            "id",
+            "service_year"
+          ]
+        },
+        {
+          "id": ".users",
+          "position": {
+            "left": 2450,
+            "top": 1120
+          },
+          "size": {
+            "width": 181.8000030517578,
+            "height": 188.8000030517578
+          },
+          "color": "green",
+          "columns": [
+            "id",
+            "employee_id",
+            "username",
+            "password_hash",
+            "last_login",
+            "is_active"
+          ]
+        }
+      ],
+      "createdAt": 1758805377388,
+      "updatedAt": 1758805397446
+    }
+  },
+  "createdAt": 1758805390072,
+  "updatedAt": 1758805390072,
+  "version": 2
+}
